@@ -1,18 +1,14 @@
 defmodule Identicon do
-  @moduledoc """
-  Documentation for `Identicon`.
-  """
+  def main(input) do
+    input
+    |> hash_input
 
-  @doc """
-  Hello world.
+  end
 
-  ## Examples
+  def hash_input(input) do
+    hex = :crypto.hash(:md5, input)
+    |> :binary.bin_to_list
 
-      iex> Identicon.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    %Identicon.Image{hex: hex}
   end
 end
